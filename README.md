@@ -19,6 +19,7 @@ MatterGen is a generative model for inorganic materials design across the period
 - [Installation](#installation)
 - [Get started with a pre-trained model](#get-started-with-a-pre-trained-model)
 - [Generating materials](#generating-materials)
+- [Colab tutorial for computational chemistry students](#colab-tutorial-for-computational-chemistry-students)
 - [Evaluation](#evaluation)
 - [Train MatterGen yourself](#train-mattergen-yourself)
 - [Data release](#data-release)
@@ -119,6 +120,19 @@ export MODEL_NAME=chemical_system_energy_above_hull
 export RESULTS_PATH="results/$MODEL_NAME/"  # Samples will be written to this directory, e.g., `results/dft_mag_density`
 mattergen-generate $RESULTS_PATH --pretrained-name=$MODEL_NAME --batch_size=16 --properties_to_condition_on="{'energy_above_hull': 0.05, 'chemical_system': 'Li-O'}" --diffusion_guidance_factor=2.0
 ```
+
+## Colab tutorial for computational chemistry students
+
+We provide a teaching-focused notebook at [`tutorials/mattergen_colab_tutorial.ipynb`](tutorials/mattergen_colab_tutorial.ipynb).
+
+The tutorial is designed for computational chemistry students and includes:
+- Colab-compatible environment setup and dependency installation
+- A conceptual walkthrough of MatterGen methodology, architecture, and training
+- Unconditional and property-conditioned generation examples
+- Basic parsing and visualization of generated materials
+
+Open it directly in Colab by uploading the notebook or using the GitHub notebook URL pattern.
+
 ## Evaluation
 
 Once you have generated a list of structures contained in `$RESULTS_PATH` (either using MatterGen or another method), you can relax the structures using the default MatterSim machine learning force field (see [repository](https://github.com/microsoft/mattersim)) and compute novelty, uniqueness, stability (using energy estimated by MatterSim), and other metrics via the following command:
